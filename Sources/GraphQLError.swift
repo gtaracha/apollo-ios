@@ -14,8 +14,16 @@ public struct GraphQLError: Error {
   }
   
   /// A description of the error.
-  public var message: String {
-    return self["message"] as! String
+  public var message: String? {
+    return self["message"] as? String
+  }
+    
+  public var code: String {
+    return self["code"] as! String
+  }
+    
+  public var path: String {
+    return self["path"] as! String
   }
   
   /// A list of locations in the requested GraphQL document associated with the error.
@@ -39,6 +47,6 @@ public struct GraphQLError: Error {
 
 extension GraphQLError: CustomStringConvertible {
   public var description: String {
-    return self.message
+    return self.message ?? ""
   }
 }
