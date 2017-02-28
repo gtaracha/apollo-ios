@@ -19,11 +19,11 @@ public struct GraphQLError: Error {
   }
     
   public var code: String {
-    return self["code"] as! String
+    return self["code"] as? String ?? ""
   }
     
   public var path: String {
-    return self["path"] as! String
+    return self["path"] as? String ?? ""
   }
   
   /// A list of locations in the requested GraphQL document associated with the error.
